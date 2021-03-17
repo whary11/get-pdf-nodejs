@@ -38,7 +38,7 @@ app.get("/get_pdf", (req, res) => {
                     var stat = fs.statSync(`./${namePdf}`);
                     res.setHeader('Content-Length', stat.size);
                     res.setHeader('Content-Type', 'application/pdf');
-                    res.setHeader('Content-Disposition', 'attachment; filename=quote.pdf');
+                    res.setHeader('Content-Disposition', 'attachment; filename=report.pdf');
                     file.pipe(res);
                 }
             });
