@@ -34,12 +34,10 @@ app.get("/get_pdf", (req, res) => {
                 if (err) {
                     res.send(err);
                 } else {
-                    var file = fs.createReadStream(`./${namePdf}`);
-                    var stat = fs.statSync(`./${namePdf}`);
-                    res.setHeader('Content-Length', stat.size);
-                    res.setHeader('Content-Type', 'application/pdf');
-                    res.setHeader('Content-Disposition', 'attachment; filename=report.pdf');
-                    file.pipe(res);
+                    var d =fs.readFileSync(`./${namePdf}`);
+                    res.contentType("application/pdf");
+                    res.send(d);
+
                 }
             });
         }
